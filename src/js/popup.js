@@ -30,6 +30,7 @@ reloadSessionDataBtn.addEventListener("click", async () => {
   showSessionLoading();
 
   let leetCodeProgress = await fetchLeetCodeProgress();
+  
   chrome.storage.sync.set({ leetCodeProgress });
 
   showSessionData();
