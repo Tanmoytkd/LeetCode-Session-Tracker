@@ -30,6 +30,9 @@ reloadSessionDataBtn.addEventListener("click", async () => {
   showSessionLoading();
 
   let leetCodeProgress = await fetchLeetCodeProgress();
+  if(leetCodeProgress.sessionName != undefined){
+    leetCodeProgress.sessionName = "Anonymous Session";
+  }
   chrome.storage.sync.set({ leetCodeProgress });
 
   showSessionData();
