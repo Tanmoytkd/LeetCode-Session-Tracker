@@ -1,12 +1,12 @@
 try {
-  importScripts("src/js/leetcodeApi.js");
+  importScripts("src/js/leetCodeApi.js");
 } catch (e) {
   console.error(e);
 }
 
 let loadSessionData = async () => {
-  let leetcodeProgress = await fetchLeetcodeProgress();
-  chrome.storage.sync.set({ leetcodeProgress });
+  let leetCodeProgress = await fetchLeetCodeProgress();
+  chrome.storage.sync.set({ leetCodeProgress });
 };
 
 loadSessionData();

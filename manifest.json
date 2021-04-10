@@ -1,6 +1,6 @@
 {
   "name": "LeetCode Session Tracker",
-  "description": "See the current leetcode session, no matter which page of leetcode you are on",
+  "description": "See the current LeetCode session, no matter which page of LeetCode you are on",
   "version": "1.0",
   "manifest_version": 3,
   "background": {

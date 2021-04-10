@@ -1,7 +1,7 @@
 // import from module still isn't supported in chrome extensions,
-// so, we are importing the global fetchLeetcodeProgress from the html,
+// so, we are importing the global fetchLeetCodeProgress from the html,
 // once import from module is supported, use the following line:
-// import { fetchLeetcodeProgress } from "./leetcodeApi";
+// import { fetchLeetCodeProgress } from "./leetCodeApi";
 
 let reloadSessionDataBtn = document.getElementById("reloadSessionData");
 let sessionDataDiv = document.getElementById("sessionData");
@@ -11,11 +11,11 @@ function showSessionLoading() {
 }
 
 function showSessionData() {
-  chrome.storage.sync.get("leetcodeProgress", ({ leetcodeProgress }) => {
+  chrome.storage.sync.get("leetCodeProgress", ({ leetCodeProgress }) => {
     let sessionData = undefined;
 
-    if (leetcodeProgress.sessionName != undefined) {
-      sessionData = leetcodeProgress.sessionName;
+    if (leetCodeProgress.sessionName != undefined) {
+      sessionData = leetCodeProgress.sessionName;
     } else {
       sessionData = "You are Logged out right now";
     }
@@ -29,10 +29,10 @@ showSessionData();
 reloadSessionDataBtn.addEventListener("click", async () => {
   showSessionLoading();
 
-  let leetcodeProgress = await fetchLeetcodeProgress();
-  chrome.storage.sync.set({ leetcodeProgress });
+  let leetCodeProgress = await fetchLeetCodeProgress();
+  chrome.storage.sync.set({ leetCodeProgress });
 
   showSessionData();
 
-  console.log(`Session Reloaded: ${leetcodeProgress.sessionName}`);
+  console.log(`Session Reloaded: ${leetCodeProgress.sessionName}`);
 });

@@ -1,5 +1,5 @@
-async function fetchLeetcodeProgress() {
-  console.log("Fetch Leetcode Data");
+async function fetchLeetCodeProgress() {
+  console.log("Fetch LeetCode Data");
 
   let response = await fetch("https://leetcode.com/api/progress/all/", {
     headers: {
@@ -16,8 +16,8 @@ async function fetchLeetcodeProgress() {
     credentials: "include",
   });
 
-  let leetcodeProgress = await response.json();
+  let leetCodeProgress = await response.json();
 
-  console.log(leetcodeProgress);
-  return leetcodeProgress;
+  console.log(leetCodeProgress);
+  return leetCodeProgress;
 }
