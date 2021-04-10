@@ -18,6 +18,10 @@ async function fetchLeetCodeProgress() {
 
   let leetCodeProgress = await response.json();
 
+  if (leetCodeProgress.sessionName === "") {
+    leetCodeProgress.sessionName = "Anonymous Session";
+  }
+
   console.log(leetCodeProgress);
   return leetCodeProgress;
 }
