@@ -25,3 +25,19 @@ async function fetchLeetCodeProgress() {
   console.log(leetCodeProgress);
   return leetCodeProgress;
 }
+
+var leetCodeProgress = {};
+
+async function loadProgressData() {
+  leetCodeProgress.loading = true;
+  chrome.storage.sync.set({ leetCodeProgress });
+
+  try {
+    latestProgress = await fetchLeetCodeProgress();
+    leetCodeProgress = { ...latestProgress, loading: false };
+
+    chrome.storage.sync.set({ leetCodeProgress });
+  } catch (error) {
+    console.error(error);
+  }
+}

@@ -4,10 +4,5 @@ try {
   console.error(e);
 }
 
-let loadSessionData = async () => {
-  let leetCodeProgress = await fetchLeetCodeProgress();
-  chrome.storage.sync.set({ leetCodeProgress });
-};
-
-loadSessionData();
-setInterval(loadSessionData, 60000);
+loadProgressData();
+setInterval(loadProgressData, 60000);

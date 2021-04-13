@@ -6,18 +6,18 @@
 let reloadSessionDataBtn = document.getElementById("reloadSessionData");
 let sessionDataDiv = document.getElementById("sessionData");
 
-function showSessionLoading() {
-  sessionDataDiv.innerText = "Loading...";
-}
-
 function showSessionData() {
   chrome.storage.sync.get("leetCodeProgress", ({ leetCodeProgress }) => {
     let sessionData = undefined;
 
-    if (leetCodeProgress.sessionName != undefined) {
-      sessionData = leetCodeProgress.sessionName;
+    if (leetCodeProgress.loading) {
+      sessionData = "Loading...";
     } else {
-      sessionData = "You are Logged out right now";
+      if (leetCodeProgress.sessionName == undefined) {
+        sessionData = "You are Logged out right now";
+      } else {
+        sessionData = leetCodeProgress.sessionName;
+      }
     }
 
     sessionDataDiv.innerText = sessionData;
@@ -26,14 +26,15 @@ function showSessionData() {
 
 showSessionData();
 
+chrome.storage.onChanged.addListener(function (changes, namespace) {
+  for (key in changes) {
+    if (key === "leetCodeProgress") {
+      showSessionData();
+    }
+  }
+});
+
 reloadSessionDataBtn.addEventListener("click", async () => {
-  showSessionLoading();
-
-  let leetCodeProgress = await fetchLeetCodeProgress();
-  
-  chrome.storage.sync.set({ leetCodeProgress });
-
-  showSessionData();
-
+  loadProgressData();
   console.log(`Session Reloaded: ${leetCodeProgress.sessionName}`);
 });
