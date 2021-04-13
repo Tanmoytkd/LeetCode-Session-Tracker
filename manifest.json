@@ -12,7 +12,7 @@
       "matches": ["<all_urls>"]
     }
   ],
-  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "permissions": ["storage", "activeTab", "scripting", "tabs", "alarms"],
   "host_permissions": ["*://*.leetcode.com/*"],
   "action": {
     "default_popup": "src/html/popup.html",

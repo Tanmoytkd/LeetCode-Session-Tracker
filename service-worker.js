@@ -5,4 +5,13 @@ try {
 }
 
 loadProgressData();
-setInterval(loadProgressData, 60000);
+
+chrome.alarms.onAlarm.addListener(async function (alarm) {
+  if (alarm.name == "reload-leetcode-progress") {
+    loadProgressData();
+  }
+});
+
+chrome.alarms.create("reload-leetcode-progress", {
+  periodInMinutes: 1,
+});
