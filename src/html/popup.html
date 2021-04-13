@@ -2,14 +2,23 @@
 <html>
   <head>
     <link rel="stylesheet" href="../css/popup.css" />
+
+    <script src="../js/leetCodeApi.js" defer></script>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/popup.js" defer></script>
   </head>
   <body>
     <div class="container">
       <h1 id="sessionData"></h1>
+      <br />
+
+      <div id="sessionChangeForm">
+        Change Session:
+        <select name="newSession" id="newSession"></select>
+      </div>
+      <br />
+
       <button id="reloadSessionData">Reload Session Data</button>
     </div>
-
-    <script src="../js/leetCodeApi.js"></script>
-    <script src="../js/popup.js"></script>
   </body>
 </html>
