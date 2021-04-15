@@ -33,16 +33,14 @@ function showSessionData() {
   chrome.storage.sync.get("leetCodeProgress", ({ leetCodeProgress }) => {
     if (leetCodeProgress.loading) {
       sessionDataDiv.innerText = "Loading...";
-      showSessionList(leetCodeProgress);
     } else if (leetCodeProgress.sessionName == undefined) {
       sessionDataDiv.innerText = "You are Logged out right now";
-      showSessionList(leetCodeProgress);
     } else {
       sessionData = leetCodeProgress.sessionName;
       sessionDataDiv.innerText = sessionData;
-
-      showSessionList(leetCodeProgress);
     }
+
+    showSessionList(leetCodeProgress);
   });
 }
 
