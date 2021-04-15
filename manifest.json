@@ -9,7 +9,11 @@
   "content_scripts": [
     {
       "matches": ["*://leetcode.com/*"],
-      "js": ["src/js/jquery.min.js", "src/js/submit-prevention.js"]
+      "js": [
+        "src/js/jquery.min.js",
+        "src/js/leetCodeApi.js",
+        "src/js/submit-prevention.js"
+      ]
     }
   ],
   "web_accessible_resources": [

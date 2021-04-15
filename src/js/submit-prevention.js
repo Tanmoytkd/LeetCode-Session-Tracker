@@ -1,4 +1,4 @@
-function replaceSubmitBtnWithDummy() {
+async function replaceSubmitBtnWithDummy() {
   let submitBtn = $(".submit__2ISl");
   if (submitBtn == undefined) {
     return;
@@ -12,14 +12,16 @@ function replaceSubmitBtnWithDummy() {
   );
   dummyButton.insertAfter(submitBtn);
 
-  dummyButton.click(() => {
+  dummyButton.click(async () => {
+    await loadProgressData();
+
     chrome.storage.sync.get("leetCodeProgress", ({ leetCodeProgress }) => {
       if (leetCodeProgress.loading) {
         alert(
           "You cannot submit when the session is loading. Please wait a moment and try again."
         );
       } else if (leetCodeProgress.sessionName == undefined) {
-        alert("You are Logged out right now. Please Login to submit solutions");
+        alert("You are logged out right now. Please login again to submit solutions");
       } else {
         let sessionName = leetCodeProgress.sessionName;
         let submitConfirmed = confirm(
@@ -32,8 +34,6 @@ function replaceSubmitBtnWithDummy() {
           alert("Submission Cancelled");
         }
       }
-
-      showSessionList(leetCodeProgress);
     });
   });
 }
