@@ -6,6 +6,17 @@
 let reloadSessionDataBtn = document.getElementById("reloadSessionData");
 let sessionDataDiv = document.getElementById("sessionData");
 
+function showSolveCount(leetCodeProgress) {
+  if (leetCodeProgress.loading) {
+    $("#solveCount").hide();
+  } else if (leetCodeProgress.sessionName == undefined) {
+    $("#solveCount").hide();
+  } else {
+    $("#solveCount").show();
+    $("#solveCount").html(`Solved: ${leetCodeProgress.solvedTotal}/${leetCodeProgress.questionTotal} &nbsp;&nbsp; Attempted: ${leetCodeProgress.attempted}<br> Easy: ${leetCodeProgress.solvedPerDifficulty.Easy}, Medium: ${leetCodeProgress.solvedPerDifficulty.Medium}, Hard: ${leetCodeProgress.solvedPerDifficulty.Hard}`);
+  }
+}
+
 function showSessionList(leetCodeProgress) {
   let sessionList = leetCodeProgress.sessionList;
   if (sessionList == undefined || sessionList.length === 0) {
@@ -41,6 +52,7 @@ function showSessionData() {
     }
 
     showSessionList(leetCodeProgress);
+    showSolveCount(leetCodeProgress);
   });
 }
 
