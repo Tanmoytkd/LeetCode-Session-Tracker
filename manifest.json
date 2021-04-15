@@ -6,6 +6,12 @@
   "background": {
     "service_worker": "service-worker.js"
   },
+  "content_scripts": [
+    {
+      "matches": ["*://leetcode.com/*"],
+      "js": ["src/js/jquery.min.js", "src/js/submit-prevention.js"]
+    }
+  ],
   "web_accessible_resources": [
     {
       "resources": ["src/js/*"],
@@ -13,7 +19,7 @@
     }
   ],
   "permissions": ["storage", "activeTab", "scripting", "tabs", "alarms"],
-  "host_permissions": ["*://*.leetcode.com/*"],
+  "host_permissions": ["*://leetcode.com/*"],
   "action": {
     "default_popup": "src/html/popup.html",
     "default_icon": {
