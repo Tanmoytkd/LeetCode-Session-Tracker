@@ -13,5 +13,5 @@ chrome.alarms.onAlarm.addListener(async function (alarm) {
 });
 
 chrome.alarms.create("reload-leetcode-progress", {
-  periodInMinutes: 1,
+  periodInMinutes: 5,
 });
